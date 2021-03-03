@@ -70,7 +70,7 @@ public class UserRegistrationTest {
 
     @Test
     public void give_Password_False_Test() {
-        boolean result = user.Password("Mayur-123");
+        boolean result = user.Password("mayur-123");
         Assert.assertFalse(result);
     }
 }
