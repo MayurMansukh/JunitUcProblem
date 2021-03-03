@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 public class UserRegistration {
     public boolean result;
     private static final String patternForName = "[A-Z]{3}";
+    private static final String patternForMobileNumber = "^[0-9]{2}[ ][0-9]{10}$";
 
     public boolean FirstName(String FirstName) {
         result = Pattern.compile(patternForName).matcher(FirstName).matches();
@@ -13,6 +14,10 @@ public class UserRegistration {
 
     public boolean LastName(String LastName){
         result = Pattern.compile(patternForName).matcher(LastName).matches();
+        return result;
+    }
+    public boolean MobileNumber(String MobileNumber){
+        result = Pattern.compile(patternForMobileNumber).matcher(MobileNumber).matches();
         return result;
     }
 
