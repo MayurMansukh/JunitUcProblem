@@ -22,5 +22,19 @@ public class UserRegistrationTest {
     }
 
 
-   
+    @Test
+    public void give_LastName_True_Test() {
+        UserRegistration user = new UserRegistration();
+        boolean result = user.LastName("Man");
+        Assert.assertTrue(result);
+    }
+
+
+    @Test
+    public void give_LastName_False_Test() {
+        UserRegistration user = new UserRegistration();
+        boolean result = user.LastName("Mansukh");
+        Assert.assertFalse(result);
+
+    }
 }
