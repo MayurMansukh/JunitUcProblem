@@ -4,31 +4,34 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
     public boolean result;
-    private static final String patternForName = "[A-Z]{3}";
-    private static final String patternForMobileNumber = "^[0-9]{2}[ ][0-9]{10}$";
-    private static final String patternForEmail = "^[a-zA-Z0-9]+(?:[\\.+_-][a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z]{1,}+)*$";
-    private static final String patternForPassword = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}";
+    public static String patternfirstname="[A-Z]{1}[a-z]{2,}";
+    public static String patternlastname="[A-Z]{1}[a-z]{2,}";
+    public static String patternemail="^[a-zA-z0-9’*+/=?`{|}~^-]{1,}(?:\\.[a-zA-Z0-9’*+/=?`{|}~^-]+)*@[a-zA-Z0-9]{1,}(?:\\.[a-zA-Z,]{2,6})?(?:\\.[a-zA-Z,]{2,6})?$";
+    public static String patterphonenumber="^[0-9]{2}[ ][0-9]{10}$";
+    public static String patterpassword="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}";
 
-    public boolean FirstName(String FirstName) {
-        result = Pattern.compile(patternForName).matcher(FirstName).matches();
-        return result;
+    public boolean validateFirstName(String firstname) {
+        Pattern pattern= Pattern.compile(patternfirstname);
+        return pattern.matcher(firstname).matches();
+    }
+    public boolean validateLastName(String lastname)
+    {
+        Pattern pattern= Pattern.compile(patternlastname);
+        return pattern.matcher(lastname).matches();
+    }
+    public boolean validateEmail(String email)
+    {
+        Pattern pattern = Pattern.compile(patternemail);
+        return pattern.matcher(email).matches();
+    }
+    public boolean validatePhonenumber(String phonenumber) {
+        Pattern pattern= Pattern.compile(patterphonenumber);
+        return pattern.matcher(phonenumber).matches();
+    }
+    public boolean validatePassword(String password)
+    {
+        Pattern pattern = Pattern.compile(patterpassword);
+        return pattern.matcher(password).matches();
     }
 
-    public boolean LastName(String LastName){
-        result = Pattern.compile(patternForName).matcher(LastName).matches();
-        return result;
-    }
-    public boolean MobileNumber(String MobileNumber){
-        result = Pattern.compile(patternForMobileNumber).matcher(MobileNumber).matches();
-        return result;
-    }
-    public boolean Email(String Email){
-        result = Pattern.compile(patternForEmail).matcher(Email).matches();
-        return result;
-    }
-    public boolean Password(String Password){
-        result = Pattern.compile(patternForPassword).matcher(Password).matches();
-        return result;
-    }
-
-}
+}}

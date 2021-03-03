@@ -9,7 +9,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.runners.Parameterized.*;
+
 
 @RunWith(Parameterized.class)
 
@@ -40,4 +40,4 @@ public class ParameterisedTestInvalidEmail {
         boolean result=option.validateEmail(email);
         Assert.assertFalse(result);
     }
-}}
+}
