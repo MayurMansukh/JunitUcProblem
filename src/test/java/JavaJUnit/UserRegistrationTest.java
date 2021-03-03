@@ -50,4 +50,15 @@ public class UserRegistrationTest {
         boolean result = user.MobileNumber("9987451480");
         Assert.assertFalse(result);
     }
+    @Test
+    public void give_Email_True_Test() {
+        boolean result = user.Email("Mayurmansukh99@gmail.com");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void give_Email_False_Test() {
+        boolean result = user.Email("abc..2002@gmail.com");
+        Assert.assertFalse(result);
+    }
 }
