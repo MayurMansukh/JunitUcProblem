@@ -61,4 +61,16 @@ public class UserRegistrationTest {
         boolean result = user.Email("abc..2002@gmail.com");
         Assert.assertFalse(result);
     }
+
+    @Test
+    public void give_Password_True_Test() {
+        boolean result = user.Password("Mansukh_c123");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void give_Password_False_Test() {
+        boolean result = user.Password("Mayur-123");
+        Assert.assertFalse(result);
+    }
 }
