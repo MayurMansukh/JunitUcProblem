@@ -3,41 +3,71 @@ package JavaJUnit;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
-
-import static org.junit.runners.Parameterized.*;
-
-@RunWith(Parameterized.class)
-
-public class ParameterisedTestInvalidEmail {
-    private String email;
-    UserRegistration option;
-    public ParameterisedTestInvalidEmail(String email)
-    {
-        this.email=email;
-    }
+public class UserRegistrationTest {
+    UserRegistration user;
 
     @Before
-    public void setup()
-    {
-        option = new UserRegistration();
-    }
-
-    @Parameterized.Parameters
-    public static Collection input()
-    {
-        return Arrays.asList(new Object[] {"abc", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com", "abc()*@gmail.com",
-                "abc@%*.com", "abc..2002@gmail.com", "abc.@gmail.com", "abc@abc@gmail.com", "abc@gmail.com.1a", "abc@gmail.com.aa.au"});
+    public void intialize() {
+        user=new UserRegistration();
     }
 
     @Test
-    public void given_email_check_false()
-    {
-        boolean result=option.validateEmail(email);
+    public void given_first_name_check_true() {
+        boolean result=user.validateFirstName("Omkar");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void given_first_name_check_false() {
+        boolean result=user.validateFirstName("omkar");
         Assert.assertFalse(result);
     }
-}}
+
+    @Test
+    public void given_last_name_check_true() {
+        boolean result=user.validateLastName("Mali");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given_last_name_check_false() {
+        boolean result=user.validateLastName("mali");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void given_email_check_true() {
+        boolean result=user.validateEmail("omkarmali@gmail.com");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given_email_check_false() {
+        boolean result=user.validateEmail("omkar.@.com");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void given_phone_number_check_true() {
+        boolean result=user.validatePhonenumber("91 9029556132");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given_phone_number_check_false() {
+        boolean result=user.validatePhonenumber(".. 565445");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void given_password_check_true() {
+        boolean result=user.validatePassword("Abcdefghah@11");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given_password_check_false() {
+        boolean result=user.validatePassword("ab");
+        Assert.assertFalse(result);
+    }
+}
